@@ -1,0 +1,11 @@
+*~
+*.orig
+*.iml
+.idea
+.DS_Store
+.git
+.gitignore
+README.md
+LICENSE
+docker-compose.yml
+Dockerrun.aws.json
