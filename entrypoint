@@ -1,0 +1,44 @@
+#!/bin/bash
+# ***************************************
+# **     Launch >bootenv REST API      **
+# **        Date : 28/06/2015          **
+# **      Author : Andrés Amado        **
+# ***************************************
+
+BOOTENV_PATH=${BOOTENV_PATH:-/usr/src/bootenv-rest-api}
+
+startAPI () {
+    cd ${BOOTENV_PATH}
+    npm start
+}
+
+apiHelp () {
+  echo "Available options:"
+  echo " api:start          - Starts the >bootenv REST-API (default)"
+  echo " api:help           - Displays the help"
+  echo " [command]          - Execute the specified linux command e.g: bash"
+}
+
+case "$1" in
+  api:start)
+    startAPI
+    ;;
+  api:help)
+    apiHelp
+    ;;
+  *)
+    if [ -x $1 ]; then
+      $1
+    else
+      prog=$(which $1)
+      if [ -n "${prog}" ] ; then
+        shift 1
+        $prog $@
+      else
+        appHelp
+      fi
+    fi
+    ;;
+esac
+
+exit 0

@@ -1,0 +1,5 @@
+*~
+*.orig
+*.iml
+.idea
+.DS_Store
